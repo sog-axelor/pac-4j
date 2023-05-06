@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+	<servlet>
+		<description>
+		</description>
+		<display-name>hello</display-name>
+		<servlet-name>hello</servlet-name>
+		<servlet-class>com.unique.app.main.Hello</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>hello</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>
+		</description>
+		<display-name>validate</display-name>
+		<servlet-name>validate</servlet-name>
+		<servlet-class>com.unique.app.main.Validate</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>validate</servlet-name>
+		<url-pattern>/validate</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<description>
+		</description>
+		<display-name>ov</display-name>
+		<servlet-name>ov</servlet-name>
+		<servlet-class>com.unique.app.main.OtpValidate</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ov</servlet-name>
+		<url-pattern>/ov</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>otp</display-name>
+		<servlet-name>otp</servlet-name>
+		<servlet-class>com.unique.app.main.Otp</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>otp</servlet-name>
+		<url-pattern>/otp</url-pattern>
+	</servlet-mapping>
+
+</web-app>
