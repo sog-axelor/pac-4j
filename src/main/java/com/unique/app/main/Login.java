@@ -12,7 +12,14 @@ public class Login {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name,email,pwd;
+	private boolean qr;
 	
+	public boolean isQr() {
+		return qr;
+	}
+	public void setQr(boolean qr) {
+		this.qr = qr;
+	}
 	public int getId() {
 		return id;
 	}

@@ -17,9 +17,7 @@ public class Hello extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-	
-		
+		PrintWriter out = response.getWriter();		
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
@@ -33,7 +31,7 @@ public class Hello extends HttpServlet {
 			login.setEmail(email);
 			login.setName(name);
 			login.setPwd(pwd);
-			
+			login.setQr(false);
 			em.persist(login);
 			
 			em.getTransaction().commit();

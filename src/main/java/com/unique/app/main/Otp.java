@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.example.auth.google.MainApplication;
 import com.example.auth.google.Utils;
@@ -18,8 +19,8 @@ public class Otp extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		PrintWriter out = response.getWriter();
+		HttpSession session=request.getSession(); 
+		Object email1 = session.getAttribute("email");
 		String d1 = request.getParameter("d1");
 		String d2 = request.getParameter("d2");
 		String d3 = request.getParameter("d3");
@@ -31,7 +32,7 @@ public class Otp extends HttpServlet {
 			
 		 String secretKey = "QDWSM3OYBPGTEVSPB5FKVDM3CSNCWHVK";
 			String emailAdd = email;
-			String companyName = "Veer Narmad South Gujarat University";
+			String companyName = email1.toString();
 			String barCodeUrl = Utils.getGoogleAuthenticatorBarCode(secretKey, emailAdd, companyName);
 			try {
 				Utils.createQRCode(barCodeUrl, "QRCode.png", 400, 400);

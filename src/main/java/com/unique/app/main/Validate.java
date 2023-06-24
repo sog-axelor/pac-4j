@@ -6,19 +6,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
 
 public class Validate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,18 +27,25 @@ public class Validate extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
+		boolean qr = false;
+
+
 		   HttpSession session=request.getSession(); 
 		
 		  try{
               Class.forName("org.postgresql.Driver");
               Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/pac4j","axelor","axelor");
-              String sql = "select email,pwd from Login";
+              String sql = "select email,pwd,qr from Login";
               Statement st = con.createStatement();
               ResultSet rs = st.executeQuery(sql);
               while(rs.next()){
                   String email1 = rs.getString(1);
                   String pwd1 = rs.getString(2);
-                  if(email.equals(email1) && pwd.equals(pwd1)){
+                  boolean qr1 = rs.getBoolean(3);
+                  if(email.equals(email1) && pwd.equals(pwd1) && !(qr || qr1)){
+                	  response.sendRedirect("welcome.jsp");
+                	  session.setAttribute("email",email);
+                  }else if(email.equals(email1) && pwd.equals(pwd1) && (qr || qr1)) {
                 	  response.sendRedirect("otp.jsp");
                 	  session.setAttribute("email",email);
                   }

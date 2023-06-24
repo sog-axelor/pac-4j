@@ -53,4 +53,16 @@
 		<url-pattern>/otp</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<description>
+		</description>
+		<display-name>process</display-name>
+		<servlet-name>process</servlet-name>
+		<servlet-class>com.unique.app.main.process</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>process</servlet-name>
+		<url-pattern>/process</url-pattern>
+	</servlet-mapping>
 </web-app>
